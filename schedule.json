@@ -5,13 +5,13 @@
   "commands" : [
     {
        "id" : "RTTY-85",
-       "capture" : "../kiwiclient/kiwirecorder.py -s {} -p {} -f {} -m iq -r8000 --tlimit={} --fn={}",
-       "process" : "../decoders/cmdfsk/cmdfsk -t rtty-iq -c500 -S85 -f {}.wav > {}.txt"
+       "capture" : "{}/kiwirecorder.py -s {} -p {} -f {} -m iq -r8000 --tlimit={} --fn={} --connect-retries=1",
+       "process" : "{}/cmdfsk -t rtty-iq -c500 -S85 -f {}.wav > {}.txt"
     },
     {
        "id" : "NAVTEX",
-       "capture" : "../kiwiclient/kiwirecorder.py -s {} -p {} -f {} -m iq -r8000 --tlimit={} --fn={}",
-       "process" : "../decoders/cmdfsk/cmdfsk -t navtex-iq -c500 -S170 -f {}.wav > {}.txt"
+       "capture" : "{}/kiwirecorder.py -s {} -p {} -f {} -m iq -r8000 --tlimit={} --fn={} --connect-retries=1",
+       "process" : "{}/cmdfsk -t navtex-iq -c500 -S170 -f {}.wav > {}.txt"
     }
   ],
   "stations" : [

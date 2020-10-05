@@ -32,11 +32,11 @@ for s in d.get('schedules', []):
         tune_freq = (station['frequency']+station['offset'])/1000
         filename = 'files/'+s['filename']+'_'+trans_id
 
-        command = commands['capture'].format(radio['hostname'], radio['port'], tune_freq, s['duration'], filename)
+        command = commands['capture'].format(os.environ.get('KIWICLIENT_DIR'), radio['hostname'], radio['port'], tune_freq, s['duration'], filename)
         print(command)
         os.system(command)
 
-        command = commands['process'].format(filename, filename)
+        command = commands['process'].format(os.environ.get('CMDFSK_DIR'), filename, filename)
         print(command)
         os.system(command)
 
