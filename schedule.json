@@ -1,0 +1,41 @@
+{
+  "radios": [
+    { "id" : "radio1",  "hostname" : "192.168.0.245",   "port": "8073" }
+  ],
+  "commands" : [
+    {
+       "id" : "RTTY-85",
+       "capture" : "../kiwiclient/kiwirecorder.py -s {} -p {} -f {} -m iq -r8000 --tlimit={} --fn={}",
+       "process" : "../decoders/cmdfsk/cmdfsk -t rtty-iq -c500 -S85 -f {}.wav > {}.txt"
+    },
+    {
+       "id" : "NAVTEX",
+       "capture" : "../kiwiclient/kiwirecorder.py -s {} -p {} -f {} -m iq -r8000 --tlimit={} --fn={}",
+       "process" : "../decoders/cmdfsk/cmdfsk -t navtex-iq -c500 -S170 -f {}.wav > {}.txt"
+    }
+  ],
+  "stations" : [
+    { "id" : "DDH3",        "name" : "DWD FAX  3855,0 kHz",             "frequency" : 3855000,  "offset" : -500,    "mode" : "FAX" },
+    { "id" : "DDH47",       "name" : "DWD RTTY Program 2   147,3 kHz",  "frequency" : 147300,   "offset" : -500,    "mode" : "RTTY-85" },
+    { "id" : "NAVTEX518",   "name" : "Navtex  518 kHz",                 "frequency" : 518000,   "offset" : -500,    "mode" : "NAVTEX" },
+    { "id" : "NAVTEX490",   "name" : "Navtex  490 kHz",                 "frequency" : 490000,   "offset" : -500,    "mode" : "NAVTEX" }
+  ],
+  "schedules": [
+    { "id" : "SXEN40-EDZW-1200",    "name" : "Station Report",          "duration" : 360,   "filename": "StationReport",    "start": "13:24:50",    "station" : "DDH47" }, 
+    { "id" : "FEBQ52-EDZW-0600",    "name" : "Medium Range",            "duration" : 1560,  "filename": "MediumRange",      "start": "15:44:50",    "station" : "DDH47" },
+    { "id" : "FQMM60-EDZW-1500",    "name" : "Medium Range",            "duration" : 960,   "filename": "MediumRange",      "start": "16:09:50",    "station" : "DDH47" },
+    { "id" : "FQEN51-EDZW-1700",    "name" : "Weather Report",          "duration" : 660,   "filename": "WeatherReport",    "start": "18:19:50",    "station" : "DDH47" },
+    { "id" : "FQEN55-EDZW-1700",    "name" : "Weather Report",          "duration" : 660,   "filename": "WeatherReport",    "start": "18:29:50",    "station" : "DDH47" },
+    { "id" : "FQEN51-EDZW-2000",    "name" : "Weather Report",          "duration" : 600,   "filename": "WeatherReport",    "start": "21:20:00",    "station" : "DDH47" },
+    { "id" : "FEBQ52-EDZW-1200",    "name" : "Medium Range Baltic",     "duration" : 960,   "filename": "MediumRange",      "start": "21:55:00",    "station" : "DDH47" },
+    { "id" : "FEEN53-EDZW-1200",    "name" : "Medium Range North Sea",  "duration" : 960,   "filename": "MediumRange",      "start": "22:34:50",    "station" : "DDH47" },
+    { "id" : "SC-999",              "name" : "DUMMY",                   "duration" : 10,    "filename": "DUMMY",            "start": "23:59:50",    "station" : "DDH47" },
+
+    { "id" : "M1P1",                "name" : "ijmuiden",                "duration" : 600,   "filename": "ijmuiden",         "start": "02:29:50",    "station" : "NAVTEX518" },
+    { "id" : "M1P2",                "name" : "ijmuiden",                "duration" : 600,   "filename": "ijmuiden",         "start": "06:29:50",    "station" : "NAVTEX518" },
+    { "id" : "M1P3",                "name" : "ijmuiden",                "duration" : 600,   "filename": "ijmuiden",         "start": "10:29:50",    "station" : "NAVTEX518" },
+    { "id" : "M1P4",                "name" : "ijmuiden",                "duration" : 600,   "filename": "ijmuiden",         "start": "14:29:50",    "station" : "NAVTEX518" },
+    { "id" : "M1P5",                "name" : "ijmuiden",                "duration" : 600,   "filename": "ijmuiden",         "start": "18:29:50",    "station" : "NAVTEX518" },
+    { "id" : "M1P6",                "name" : "ijmuiden",                "duration" : 600,   "filename": "ijmuiden",         "start": "22:29:50",    "station" : "NAVTEX518" }
+  ]
+}
